@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>V MR HEALTH — Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #6FCF2A;
+      --green-dark: #3a7a0a;
+      --green-glow: rgba(111, 207, 42, 0.25);
+      --bg: #050a02;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.5);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Organic background blobs */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.18;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #4caf1a, #1a4a00);
+      top: -150px; left: -150px;
+      animation-duration: 14s;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #7ed321, #2e6b00);
+      bottom: -100px; right: -100px;
+      animation-duration: 10s;
+      animation-delay: -5s;
+    }
+    .blob-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #a8e63d, #4a8a00);
+      top: 50%; left: 55%;
+      animation-duration: 16s;
+      animation-delay: -3s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    /* Leaf particles */
+    .leaves {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 10px; height: 14px;
+      background: var(--green);
+      border-radius: 0 100% 0 100%;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 0.4; }
+      90%  { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Noise grain overlay */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* Main layout */
+    .container {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      margin-bottom: 32px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .logo-wrap img {
+      width: 200px;
+      max-width: 60vw;
+      filter: drop-shadow(0 0 24px var(--green-glow));
+    }
+
+    /* Divider leaf line */
+    .leaf-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .leaf-divider::before,
+    .leaf-divider::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--green));
+    }
+
+    .leaf-divider::after {
+      background: linear-gradient(to left, transparent, var(--green));
+    }
+
+    .leaf-icon {
+      font-size: 18px;
+      color: var(--green);
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 10vw, 110px);
+      letter-spacing: 0.06em;
+      line-height: 1;
+      background: linear-gradient(135deg, #ffffff 0%, #a8e660 50%, #6fcf2a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 1s ease 0.35s both;
+      text-shadow: none;
+    }
+
+    .tagline {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(12px, 2.2vw, 16px);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--muted);
+      margin-top: 12px;
+      text-transform: uppercase;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    /* Message */
+    .message {
+      margin-top: 36px;
+      max-width: 480px;
+      font-size: clamp(13px, 2vw, 15px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      animation: fadeUp 1s ease 0.65s both;
+    }
+
+    /* Email input */
+    .notify-form {
+      margin-top: 40px;
+      display: flex;
+      gap: 0;
+      border-radius: 50px;
+      overflow: hidden;
+      border: 1px solid rgba(111,207,42,0.35);
+      box-shadow: 0 0 30px rgba(111,207,42,0.1);
+      animation: fadeUp 1s ease 0.8s both;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .notify-form input {
+      flex: 1;
+      padding: 14px 22px;
+      background: rgba(255,255,255,0.05);
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .notify-form input::placeholder { color: rgba(255,255,255,0.3); }
+
+    .notify-form button {
+      padding: 14px 26px;
+      background: var(--green);
+      color: #050a02;
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+
+    .notify-form button:hover { background: #8fe63a; }
+
+    /* Contact */
+    .contact {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 1s ease 0.95s both;
+    }
+
+    .contact a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+
+    .contact a:hover { color: var(--green); }
+
+    .contact .dot {
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      z-index: 10;
+    }
+
+    .footer span { color: rgba(111,207,42,0.5); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-layer">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Leaf particles -->
+  <div class="leaves" id="leaves"></div>
+
+  <!-- Grain -->
+  <div class="grain"></div>
+
+  <!-- Main -->
+  <div class="container">
+
+    <div class="logo-wrap">
+      <img src="vmr.png" alt="V MR HEALTH Logo" />
+    </div>
+
+    <div class="leaf-divider">
+      <span class="leaf-icon">🌿</span>
+    </div>
+
+    <h1 class="coming-soon">Coming Soon</h1>
+    <p class="tagline">Eat Clean &bull; Stay Lean &bull; Live Strong</p>
+
+    <p class="message">
+      We're growing something fresh for you.<br/>
+      A premium health & wellness experience is taking root — rooted in nature, built for results.
+    </p>
+
+    <div class="notify-form">
+      <input type="email" placeholder="Enter your email to get notified" />
+      <button>Notify Me</button>
+    </div>
+
+    <div class="contact">
+      <a href="tel:8008804486"><span class="dot"></span> 8008804486</a>
+      <a href="#"><span class="dot"></span> Anantapur, Rama Nagar</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Powered by <span>VisionMatrix Tech</span>
+  </div>
+
+  <script>
+    // Generate falling leaves
+    const container = document.getElementById('leaves');
+    for (let i = 0; i < 18; i++) {
+      const leaf = document.createElement('div');
+      leaf.classList.add('leaf');
+      leaf.style.left = Math.random() * 100 + 'vw';
+      leaf.style.top = Math.random() * 100 + 'vh';
+      leaf.style.animationDuration = (8 + Math.random() * 14) + 's';
+      leaf.style.animationDelay = (Math.random() * 12) + 's';
+      leaf.style.transform = `scale(${0.5 + Math.random()}) rotate(${Math.random()*180}deg)`;
+      leaf.style.opacity = 0.15 + Math.random() * 0.3;
+      container.appendChild(leaf);
+    }
+  </script>
+
+</body>
+</html>
