@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy & Refund Policy — V MR HEALTH</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f9f4;
+  --green:#1a6b0a;
+  --green-mid:#2d8a18;
+  --green-light:#e8f5e1;
+  --green-lighter:#f0fae8;
+  --text:#111814;
+  --text2:#3a4a38;
+  --muted:#7a8c76;
+  --border:#d8e8d0;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+}
+
+/* ── NAV ── */
+.topnav{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid rgba(26,107,10,0.4);
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.12em;
+  color:#a3f05a;text-decoration:none;
+}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-link{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  text-decoration:none;transition:color .2s;
+}
+.nav-link:hover{color:#a3f05a;}
+.nav-link.home-btn{
+  background:var(--green);color:#fff;
+  padding:7px 16px;border-radius:50px;
+  font-weight:600;font-size:12px;
+}
+.nav-link.home-btn:hover{background:var(--green-mid);color:#fff;}
+
+/* ── HERO BANNER ── */
+.page-banner{
+  background:linear-gradient(135deg,rgba(0,20,5,0.9),rgba(26,107,10,0.7)),
+    url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  background-color:#0d3d05;
+  padding:52px 20px 40px;
+  text-align:center;
+  border-bottom:3px solid rgba(26,107,10,0.3);
+}
+.page-banner h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(28px,6vw,48px);
+  letter-spacing:.1em;color:#fff;
+  margin-bottom:10px;
+}
+.page-banner p{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  letter-spacing:.06em;
+}
+
+/* ── IN-PAGE TABS ── */
+.policy-tabs{
+  display:flex;justify-content:center;gap:12px;
+  padding:24px 20px;
+  background:#fff;
+  border-bottom:2px solid var(--border);
+  position:sticky;top:0;z-index:50;
+}
+.ptab{
+  padding:9px 22px;
+  border:1.5px solid var(--border);
+  border-radius:50px;
+  background:transparent;
+  color:var(--muted);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:500;
+  cursor:pointer;
+  transition:all .2s;
+}
+.ptab:hover{color:var(--green);border-color:var(--green);}
+.ptab.active{
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+  font-weight:600;
+}
+
+/* ── CONTENT ── */
+.doc-wrap{
+  max-width:780px;margin:40px auto;
+  padding:0 20px 80px;
+}
+.policy-panel{display:none;}
+.policy-panel.active{display:block;animation:fadeUp .3s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.last-updated{
+  font-size:12px;color:var(--muted);
+  background:var(--green-lighter);
+  border:1px solid var(--border);
+  display:inline-block;padding:6px 16px;border-radius:50px;
+  margin-bottom:32px;
+}
+.section-block{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:28px;
+  margin-bottom:20px;
+  box-shadow:0 2px 12px rgba(26,107,10,.05);
+}
+.section-block h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.1em;
+  color:var(--green);
+  margin-bottom:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--green-light);
+}
+.section-block p{
+  font-size:14px;color:var(--text2);
+  line-height:1.8;margin-bottom:12px;
+}
+.section-block p:last-child{margin-bottom:0;}
+.section-block ul{
+  padding-left:18px;margin-bottom:12px;
+}
+.section-block ul li{
+  font-size:14px;color:var(--text2);
+  line-height:1.8;margin-bottom:6px;
+}
+.highlight-box{
+  background:var(--green-lighter);
+  border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:14px 18px;
+  margin:14px 0;
+  font-size:13.5px;color:var(--text2);
+  line-height:1.7;
+}
+.refund-table{
+  width:100%;border-collapse:collapse;margin:14px 0;
+  font-size:13.5px;
+}
+.refund-table th{
+  background:var(--green);color:#fff;
+  padding:10px 14px;text-align:left;
+  font-weight:600;font-size:12px;letter-spacing:.06em;
+}
+.refund-table td{
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+  color:var(--text2);
+  vertical-align:top;
+  line-height:1.6;
+}
+.refund-table tr:last-child td{border-bottom:none;}
+.refund-table tr:nth-child(even) td{background:var(--green-lighter);}
+.yes{color:#1a6b0a;font-weight:700;}
+.no{color:#c0392b;font-weight:700;}
+
+.contact-block{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  border-radius:14px;
+  padding:28px;
+  text-align:center;
+  margin-top:32px;
+}
+.contact-block h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.1em;
+  color:#a3f05a;margin-bottom:8px;
+}
+.contact-block p{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  margin-bottom:16px;
+}
+.contact-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#25d366,#128c3e);
+  color:#fff;border-radius:50px;
+  padding:12px 24px;
+  font-size:14px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(37,211,102,.3);
+}
+
+/* ── FOOTER ── */
+.page-footer{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:20px;text-align:center;
+  border-top:2px solid rgba(26,107,10,0.3);
+  font-size:11px;color:rgba(255,255,255,0.35);
+  letter-spacing:.06em;
+}
+.page-footer strong{color:#a3f05a;}
+.page-footer a{color:rgba(255,255,255,0.5);text-decoration:none;margin:0 8px;}
+.page-footer a:hover{color:#a3f05a;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand">V MR HEALTH</a>
+  <div class="nav-links">
+    <a href="terms.html" class="nav-link">Terms</a>
+    <a href="blog-why-vmr.html" class="nav-link">Blog</a>
+    <a href="index.html" class="nav-link home-btn">🏠 Order Now</a>
+  </div>
+</nav>
+
+<!-- BANNER -->
+<div class="page-banner">
+  <h1>Privacy & Refund Policy</h1>
+  <p>How we protect your data and handle refund requests.</p>
+</div>
+
+<!-- IN-PAGE TABS -->
+<div class="policy-tabs">
+  <button class="ptab active" onclick="showPanel('privacy',this)">🔒 Privacy Policy</button>
+  <button class="ptab" onclick="showPanel('refund',this)" id="refund-tab">↩️ Refund Policy</button>
+</div>
+
+<!-- CONTENT -->
+<div class="doc-wrap">
+
+  <!-- PRIVACY POLICY PANEL -->
+  <div class="policy-panel active" id="panel-privacy">
+    <div class="last-updated">📅 Last Updated: June 2026</div>
+
+    <div class="section-block">
+      <h2>🔒 1. Introduction</h2>
+      <p>V MR HEALTH ("we", "us", "our") is committed to protecting the privacy of our customers. This Privacy Policy explains how we collect, use, store, and protect your personal information when you interact with our website (vmrhealth.shop) or place an order with us.</p>
+      <p>By using our service, you agree to the collection and use of information in accordance with this policy. This policy applies to all customers and visitors of V MR HEALTH.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>📋 2. Information We Collect</h2>
+      <p>When you place an order, we collect the following information voluntarily provided by you:</p>
+      <ul>
+        <li><strong>Name:</strong> To address your order correctly and for delivery communication.</li>
+        <li><strong>Phone Number:</strong> To confirm your order, provide delivery updates, and contact you if needed.</li>
+        <li><strong>Delivery Address:</strong> To dispatch your order to the correct location.</li>
+      </ul>
+      <p>We do not collect payment card information, bank details, or any sensitive financial data through our website. Payments made via UPI are processed through the respective UPI apps (Google Pay, PhonePe, etc.) which have their own privacy policies.</p>
+      <div class="highlight-box">
+        ℹ️ We collect only the minimum information necessary to process and deliver your order. We do not collect information unless you voluntarily provide it.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>📱 3. WhatsApp Ordering & Data</h2>
+      <p>Our ordering system uses WhatsApp (operated by Meta Platforms, Inc.) to process your orders. When you click "Place Order on WhatsApp", your order summary and delivery details are sent directly to our business WhatsApp number (8008804486).</p>
+      <ul>
+        <li>Your order data is visible to our staff handling WhatsApp orders.</li>
+        <li>WhatsApp messages are subject to Meta's own Privacy Policy and Terms of Service.</li>
+        <li>We do not store order data in any external database. Order records exist only within our WhatsApp conversation history.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>🎯 4. How We Use Your Information</h2>
+      <p>The information you provide is used exclusively for:</p>
+      <ul>
+        <li>Processing and fulfilling your food order</li>
+        <li>Communicating delivery status and updates</li>
+        <li>Resolving disputes or issues with your order</li>
+        <li>Contacting you about menu updates or offers (only if you have opted in)</li>
+      </ul>
+      <p>We do not sell, trade, or rent your personal information to any third party for commercial purposes.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>🛡️ 5. Data Security</h2>
+      <p>We take reasonable steps to protect your personal information from unauthorized access, disclosure, or misuse. However, please be aware:</p>
+      <ul>
+        <li>No method of transmission over the internet is 100% secure.</li>
+        <li>We do not store customer data in any cloud database or CRM currently.</li>
+        <li>Our WhatsApp business account is secured with two-factor authentication.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>🔗 6. Third-Party Links</h2>
+      <p>Our website may contain links to third-party services such as Google Maps (for location) and WhatsApp. V MR HEALTH is not responsible for the privacy practices of these external services. We encourage you to review their respective privacy policies.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>📞 7. Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Request that we delete any personal information we hold about you.</li>
+        <li>Opt out of any marketing or promotional communications from us.</li>
+        <li>Request information about what data we have on file for you.</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us directly on WhatsApp at <strong>8008804486</strong>.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>✏️ 8. Changes to This Policy</h2>
+      <p>We reserve the right to update this Privacy Policy at any time. Changes will be posted on this page with an updated date. Continued use of our service after changes constitutes acceptance of the revised policy.</p>
+    </div>
+
+    <div class="contact-block">
+      <h3>Privacy Questions?</h3>
+      <p>Contact us directly and we'll address your concerns promptly.</p>
+      <a href="https://wa.me/918008804486" class="contact-wa">📲 WhatsApp Us</a>
+    </div>
+  </div>
+
+  <!-- REFUND POLICY PANEL -->
+  <div class="policy-panel" id="panel-refund">
+    <div class="last-updated">📅 Last Updated: June 2026</div>
+
+    <div class="section-block">
+      <h2>↩️ 1. Our Refund Commitment</h2>
+      <p>At V MR HEALTH, we prepare every order fresh and with care. Because our food is prepared to order, our ability to process refunds is limited. This policy outlines exactly when and how refunds are issued, so there are no surprises.</p>
+      <p>We are committed to resolving any legitimate quality concerns fairly and promptly.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>⏱️ 2. Cancellation & Refund Eligibility</h2>
+      <table class="refund-table">
+        <tr>
+          <th>Situation</th>
+          <th>Eligible for Refund?</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Order cancelled within 10 minutes of placement (before preparation)</td>
+          <td class="yes">Yes — Full Refund</td>
+          <td>Message us on WhatsApp immediately</td>
+        </tr>
+        <tr>
+          <td>Order cancelled after food preparation has begun</td>
+          <td class="no">No</td>
+          <td>Food cannot be restocked once prepared</td>
+        </tr>
+        <tr>
+          <td>Wrong item delivered</td>
+          <td class="yes">Yes — Replacement or Refund</td>
+          <td>Report with photo proof within 30 minutes of delivery</td>
+        </tr>
+        <tr>
+          <td>Food quality issue (foreign objects, spoilage)</td>
+          <td class="yes">Yes — Full Refund</td>
+          <td>Report with photo proof within 30 minutes of delivery</td>
+        </tr>
+        <tr>
+          <td>Taste preference / personal dislike</td>
+          <td class="no">No</td>
+          <td>Subjective preference is not a refund basis</td>
+        </tr>
+        <tr>
+          <td>Delivery delayed (within 45 minutes of ETA)</td>
+          <td class="no">No</td>
+          <td>Reasonable delays do not qualify</td>
+        </tr>
+        <tr>
+          <td>Customer unavailable for delivery (no-show)</td>
+          <td class="no">No</td>
+          <td>Two contact attempts will be made</td>
+        </tr>
+        <tr>
+          <td>Order not delivered due to incorrect address</td>
+          <td class="no">No</td>
+          <td>Customer is responsible for accuracy of address</td>
+        </tr>
+        <tr>
+          <td>V MR HEALTH unable to fulfil order (our end)</td>
+          <td class="yes">Yes — Full Refund</td>
+          <td>We will inform you proactively</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section-block">
+      <h2>📸 3. How to Raise a Refund Request</h2>
+      <p>To raise a refund or replacement request, please follow these steps:</p>
+      <ul>
+        <li><strong>Step 1:</strong> Take a clear photo or video of the issue (wrong item, quality concern, etc.).</li>
+        <li><strong>Step 2:</strong> WhatsApp the photo to <strong>8008804486</strong> within 30 minutes of receiving your order.</li>
+        <li><strong>Step 3:</strong> Include your name, order details, and a brief description of the issue.</li>
+        <li><strong>Step 4:</strong> Our team will review and respond within 2 hours during business hours.</li>
+      </ul>
+      <div class="highlight-box">
+        ⚠️ Refund requests raised after 30 minutes of delivery will not be considered under any circumstances. Please inspect your order upon receipt.
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2>💰 4. Refund Process</h2>
+      <p>Approved refunds will be processed as follows:</p>
+      <ul>
+        <li><strong>UPI Payments:</strong> Refunded directly to the original UPI ID within 2–3 business days.</li>
+        <li><strong>Cash Payments (COD):</strong> Refund issued as cash or credited to your next order, as mutually agreed.</li>
+      </ul>
+      <p>We do not issue refunds via cheque, bank transfer, or any method other than the original payment method or cash equivalent.</p>
+    </div>
+
+    <div class="section-block">
+      <h2>🚫 5. Non-Refundable Cases — Final</h2>
+      <p>The following situations are strictly non-refundable regardless of any other consideration:</p>
+      <ul>
+        <li>Refund request raised after 30 minutes of order delivery</li>
+        <li>Personal taste preferences or dietary changes post-ordering</li>
+        <li>Orders placed on the wrong day's menu (customer error)</li>
+        <li>Partial consumption of an order before raising a complaint</li>
+        <li>Orders affected by force majeure events (floods, power outages, local emergencies)</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>📞 6. Dispute Resolution</h2>
+      <p>If you are unsatisfied with our refund decision, you may escalate your concern by contacting us at <strong>contact@vmrhealth.shop</strong> or calling <strong>8008804486</strong>. We will review escalated disputes within 48 hours and provide a final resolution.</p>
+      <p>All disputes will be governed by the laws of India, with jurisdiction in Anantapuramu, Andhra Pradesh courts.</p>
+    </div>
+
+    <div class="contact-block">
+      <h3>Refund Request or Complaint?</h3>
+      <p>Send us a WhatsApp message with your order details and photo — we'll sort it out.</p>
+      <a href="https://wa.me/918008804486" class="contact-wa">📲 WhatsApp Us Now</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div style="margin-bottom:10px;">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="blog-why-vmr.html">Blog</a>
+  </div>
+  © 2026 V MR HEALTH · Anantapuramu &nbsp;|&nbsp; Powered by <strong>VisionMatrix Tech</strong>
+</footer>
+
+<script>
+function showPanel(name, btn){
+  document.querySelectorAll('.policy-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Auto-switch to refund tab if URL has #refund
+if(window.location.hash === '#refund'){
+  const refundBtn = document.getElementById('refund-tab');
+  if(refundBtn) showPanel('refund', refundBtn);
+}
+</script>
+</body>
+</html>
