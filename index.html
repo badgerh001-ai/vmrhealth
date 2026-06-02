@@ -35,7 +35,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ── SUBTLE LEAF PATTERN BG ── */
 body::before{
   content:'';
   position:fixed;inset:0;z-index:0;
@@ -48,19 +47,61 @@ body::before{
 /* ── HERO ── */
 .hero{
   position:relative;z-index:10;
-  background:var(--bg2);
   text-align:center;
-  padding:40px 24px 28px;
-  border-bottom:2px solid var(--border);
-  box-shadow:0 2px 20px rgba(0,0,0,.04);
+  padding:48px 24px 36px;
+  overflow:hidden;
+  border-bottom:3px solid rgba(26,107,10,0.3);
+  box-shadow:0 4px 30px rgba(0,0,0,.2);
 }
+
+/* Background food image layer */
+.hero-bg-food{
+  position:absolute;inset:0;
+  background:
+    url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80')
+    center/cover no-repeat;
+  background-color:#0d3d05;
+  animation:heroPan 18s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes heroPan{
+  from{transform:scale(1) translate(0,0);}
+  to{transform:scale(1.08) translate(-2%,1%);}
+}
+
+/* Background fitness image layer (diagonal strip) */
+.hero-bg-fitness{
+  position:absolute;inset:0;
+  background:
+    url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80')
+    center/cover no-repeat;
+  background-color:#1a4a0d;
+  clip-path:polygon(58% 0%,100% 0%,100% 100%,42% 100%);
+}
+
+/* Dark gradient overlay for text readability */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    135deg,
+    rgba(0,20,5,0.82) 0%,
+    rgba(0,55,15,0.48) 48%,
+    rgba(0,20,8,0.78) 100%
+  );
+}
+
+/* All hero content sits above backgrounds */
+.hero-content{
+  position:relative;z-index:3;
+}
+
 .logo-box{
   display:inline-block;
   background:#000;
   border-radius:16px;
   padding:12px 20px;
   margin-bottom:18px;
-  box-shadow:var(--shadow);
+  box-shadow:0 0 0 2px rgba(255,255,255,0.2), 0 8px 32px rgba(0,0,0,.5);
 }
 .logo-box img{
   width:160px;max-width:50vw;
@@ -69,7 +110,7 @@ body::before{
 .hero-services{
   font-size:clamp(10px,2vw,12px);
   letter-spacing:.22em;
-  color:var(--muted);
+  color:rgba(255,255,255,0.72);
   text-transform:uppercase;
   margin-bottom:6px;
 }
@@ -77,19 +118,22 @@ body::before{
   font-family:'DM Sans',sans-serif;
   font-style:italic;
   font-size:clamp(14px,2.5vw,17px);
-  color:var(--green);
+  color:#a3f05a;
   font-weight:600;
   margin-bottom:14px;
+  text-shadow:0 1px 8px rgba(0,0,0,0.4);
 }
 .hero-info{
-  display:inline-flex;gap:24px;flex-wrap:wrap;justify-content:center;
-  font-size:13px;color:var(--text2);
+  display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  font-size:13px;color:rgba(255,255,255,0.9);
 }
 .hero-info span{
   display:flex;align-items:center;gap:6px;
-  background:var(--green-lighter);
-  padding:6px 14px;border-radius:50px;
-  border:1px solid var(--border);
+  background:rgba(255,255,255,0.13);
+  padding:7px 16px;border-radius:50px;
+  border:1px solid rgba(255,255,255,0.25);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
 }
 
 /* ── TABS ── */
@@ -133,7 +177,7 @@ body::before{
 .content{
   position:relative;z-index:10;
   max-width:900px;margin:0 auto;
-  padding:32px 16px 140px;
+  padding:32px 16px 60px;
 }
 
 .day-panel{display:none;}
@@ -206,7 +250,6 @@ body::before{
 }
 .item-price small{font-size:11px;font-weight:400;color:var(--muted);}
 
-/* ADD BUTTON */
 .add-btn-wrap{flex-shrink:0;}
 
 .quick-add{
@@ -361,7 +404,6 @@ body::before{
 .total-label{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
 .total-amt{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--green);}
 
-/* ── CHECKOUT ── */
 .checkout-section{display:none;}
 .checkout-section.visible{display:block;}
 .cart-section.hidden{display:none;}
@@ -430,15 +472,88 @@ body::before{
 }
 .back-btn:hover{border-color:var(--green);color:var(--green);}
 
-/* ── FOOTER ── */
-.site-footer{
+/* ── QUICK LINKS FOOTER ── */
+.quick-links-section{
   position:relative;z-index:10;
-  text-align:center;padding:20px;
-  border-top:2px solid var(--border);
-  font-size:11px;color:var(--muted);letter-spacing:.08em;
-  background:var(--bg2);
+  background:linear-gradient(135deg,#061a06 0%,#0a2a0a 50%,#061a06 100%);
+  padding:48px 20px 0;
+  border-top:3px solid rgba(26,107,10,0.5);
 }
-.site-footer strong{color:var(--green);}
+.ql-container{
+  max-width:900px;margin:0 auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:32px;
+  padding-bottom:40px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.ql-brand-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:26px;letter-spacing:.12em;
+  color:#a3f05a;margin-bottom:10px;
+}
+.ql-desc{
+  font-size:12px;color:rgba(255,255,255,0.55);
+  line-height:1.7;margin-bottom:18px;
+}
+.ql-wa-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#25d366,#128c3e);
+  color:#fff;
+  border-radius:50px;
+  padding:10px 20px;
+  font-size:13px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(37,211,102,.3);
+  transition:transform .2s,box-shadow .2s;
+}
+.ql-wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.4);}
+.ql-col{}
+.ql-heading{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:15px;letter-spacing:.15em;
+  color:#a3f05a;
+  margin-bottom:14px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.ql-link{
+  display:block;
+  font-size:12.5px;color:rgba(255,255,255,0.6);
+  text-decoration:none;
+  padding:5px 0;
+  transition:color .2s;
+  line-height:1.4;
+}
+.ql-link:hover{color:#a3f05a;}
+.ql-bottom-bar{
+  max-width:900px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;
+  padding:16px 0;
+  font-size:11px;letter-spacing:.06em;
+  color:rgba(255,255,255,0.35);
+}
+.ql-bottom-bar strong{color:#a3f05a;}
+
+@media(max-width:680px){
+  .ql-container{
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .ql-brand{grid-column:1/-1;}
+  .hero-bg-fitness{display:none;}
+}
+@media(max-width:500px){
+  .items-grid{grid-template-columns:1fr 1fr;}
+  .item-name{font-size:13px;}
+  .item-price{font-size:17px;}
+  .ql-container{grid-template-columns:1fr;}
+  .ql-bottom-bar{flex-direction:column;text-align:center;}
+}
+@media(max-width:340px){
+  .items-grid{grid-template-columns:1fr;}
+}
 
 /* ── TOAST ── */
 .toast{
@@ -453,29 +568,25 @@ body::before{
   box-shadow:0 4px 20px rgba(0,0,0,.2);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-@media(max-width:500px){
-  .items-grid{grid-template-columns:1fr 1fr;}
-  .item-name{font-size:13px;}
-  .item-price{font-size:17px;}
-}
-@media(max-width:340px){
-  .items-grid{grid-template-columns:1fr;}
-}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="logo-box">
-    <img src="vmr.png" alt="V MR HEALTH"/>
-  </div>
-  <p class="hero-services">Healthy Foods · Salads · Smoothies · Tiffins & Meals</p>
-  <p class="hero-tagline">Eat Clean • Stay Lean • Live Strong</p>
-  <div class="hero-info">
-    <span>📍 Sri Swara Hospital Building, Ramnagar, Anantapuramu</span>
-    <span>📞 8008804486</span>
+  <div class="hero-bg-food"></div>
+  <div class="hero-bg-fitness"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="logo-box">
+      <img src="vmr.png" alt="V MR HEALTH"/>
+    </div>
+    <p class="hero-services">Healthy Foods · Salads · Smoothies · Tiffins & Meals</p>
+    <p class="hero-tagline">Eat Clean • Stay Lean • Live Strong</p>
+    <div class="hero-info">
+      <span>📍 Sri Swara Hospital Building, Ramnagar, Anantapuramu</span>
+      <span>📞 8008804486</span>
+    </div>
   </div>
 </header>
 
@@ -495,9 +606,39 @@ body::before{
 <!-- MENU CONTENT -->
 <main class="content" id="content"></main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  Powered by <strong>VisionMatrix Tech</strong> &nbsp;·&nbsp; © 2026 V MR HEALTH · Anantapuramu
+<!-- QUICK LINKS FOOTER -->
+<footer class="quick-links-section">
+  <div class="ql-container">
+    <div class="ql-brand">
+      <div class="ql-brand-name">V MR HEALTH</div>
+      <p class="ql-desc">Healthy Foods · Salads · Smoothies<br/>Tiffins & Meals — Anantapuramu, AP</p>
+      <a href="https://wa.me/918008804486" class="ql-wa-btn">
+        📲 Order on WhatsApp
+      </a>
+    </div>
+    <div class="ql-col">
+      <h5 class="ql-heading">Quick Links</h5>
+      <a href="index.html" class="ql-link">🏠 Home</a>
+      <a href="blog-why-vmr.html" class="ql-link">📖 Blog</a>
+      <a href="tel:8008804486" class="ql-link">📞 Call Us</a>
+    </div>
+    <div class="ql-col">
+      <h5 class="ql-heading">Legal</h5>
+      <a href="terms.html" class="ql-link">📋 Terms & Conditions</a>
+      <a href="privacy.html" class="ql-link">🔒 Privacy Policy</a>
+      <a href="privacy.html#refund" class="ql-link">↩️ Refund Policy</a>
+    </div>
+    <div class="ql-col">
+      <h5 class="ql-heading">Menu Hours</h5>
+      <span class="ql-link">🥗 Morning: 7 AM – 11 AM</span>
+      <span class="ql-link">☀️ Afternoon: 12 PM – 3 PM</span>
+      <span class="ql-link">🌿 Evening: 4 PM – 9 PM</span>
+    </div>
+  </div>
+  <div class="ql-bottom-bar">
+    <span>© 2026 V MR HEALTH · Anantapuramu</span>
+    <span>Powered by <strong>VisionMatrix Tech</strong></span>
+  </div>
 </footer>
 
 <!-- CART FAB -->
@@ -640,10 +781,8 @@ function changeQty(di,secKey,name,price,delta){
 
 function removeItem(k){
   const parts=k.split('_');
-  const di=parts[0],secKey=parts[1],name=cart[k]?cart[k].name:'';
-  const price=cart[k]?cart[k].price:0;
+  const di=parts[0],secKey=parts[1];
   delete cart[k];
-  refreshBtn(di,secKey,name,price);
   updateCartUI();
 }
 
