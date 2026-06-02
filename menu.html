@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Menu — V MR HEALTH</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f9f4;--bg2:#ffffff;--green:#1a6b0a;--green-mid:#2d8a18;
+  --green-light:#e8f5e1;--green-lighter:#f0fae8;
+  --text:#111814;--text2:#3a4a38;--muted:#7a8c76;--border:#d8e8d0;
+  --radius:14px;--shadow:0 2px 12px rgba(26,107,10,.08);--shadow-hover:0 6px 28px rgba(26,107,10,.15);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* ── TOP NAV ── */
+.topnav{
+  position:sticky;top:0;z-index:60;
+  background:#fff;border-bottom:2px solid var(--border);
+  padding:0 16px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  display:flex;align-items:center;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;max-width:900px;margin:0 auto;
+  min-height:54px;gap:12px;
+}
+.nav-back{
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;color:var(--green);
+  text-decoration:none;padding:8px 0;flex-shrink:0;
+  transition:opacity .2s;
+}
+.nav-back:hover{opacity:.75;}
+.nav-day-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:18px;letter-spacing:.1em;
+  color:var(--text);text-align:center;flex:1;
+}
+.nav-cart-btn{
+  display:flex;align-items:center;gap:7px;
+  background:var(--green);color:#fff;
+  border:none;border-radius:50px;
+  padding:8px 16px;
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:700;
+  cursor:pointer;flex-shrink:0;
+  box-shadow:0 3px 12px rgba(26,107,10,.3);
+  transition:background .2s;
+}
+.nav-cart-btn:hover{background:var(--green-mid);}
+.nav-cart-count{
+  background:#fff;color:var(--green);
+  border-radius:50%;width:20px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;
+}
+.nav-cart-btn.hidden-fab{display:none;}
+
+/* ── DAY TABS ── */
+.day-tabs-wrap{
+  background:var(--bg2);
+  border-bottom:2px solid var(--border);
+  padding:0 16px;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.day-tabs{
+  display:flex;gap:6px;
+  overflow-x:auto;scrollbar-width:none;
+  padding:10px 0;
+  max-width:900px;margin:0 auto;
+}
+.day-tabs::-webkit-scrollbar{display:none;}
+.dtab{
+  flex-shrink:0;
+  padding:7px 16px;
+  border-radius:50px;
+  border:1.5px solid var(--border);
+  background:transparent;
+  color:var(--muted);
+  font-family:'DM Sans',sans-serif;
+  font-size:12.5px;font-weight:500;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.dtab:hover{color:var(--green);border-color:var(--green);}
+.dtab.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:700;box-shadow:0 3px 12px rgba(26,107,10,.3);}
+.dtab.today-tab{position:relative;}
+.dtab.today-tab::after{content:'•';position:absolute;top:2px;right:4px;font-size:8px;color:#a3f05a;}
+
+/* ── CONTENT ── */
+.content{max-width:900px;margin:0 auto;padding:28px 16px 140px;}
+
+/* ── MEAL SECTION ── */
+.meal-section{margin-bottom:40px;}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--green-light);}
+.section-badge{background:var(--green);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.12em;padding:5px 14px;border-radius:4px;}
+.section-label{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.08em;color:var(--text);}
+.section-time{margin-left:auto;font-size:11px;letter-spacing:.1em;color:var(--muted);background:var(--green-lighter);border:1px solid var(--border);padding:4px 12px;border-radius:20px;white-space:nowrap;}
+
+/* ── ITEMS GRID ── */
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s;}
+.item-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:rgba(26,107,10,.3);}
+.item-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.35;}
+.item-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;}
+.item-price{font-size:20px;font-weight:700;color:var(--text);}
+.item-price small{font-size:11px;font-weight:400;color:var(--muted);}
+.add-btn-wrap{flex-shrink:0;}
+.quick-add{padding:8px 18px;background:var(--green);color:#fff;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap;box-shadow:0 2px 8px rgba(26,107,10,.25);}
+.quick-add:hover{background:var(--green-mid);transform:scale(1.04);}
+.qty-ctrl{display:flex;align-items:center;background:var(--green-lighter);border:1.5px solid var(--border);border-radius:50px;overflow:hidden;}
+.qty-btn{width:32px;height:32px;background:none;border:none;color:var(--green);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.qty-btn:hover{background:rgba(26,107,10,.12);}
+.qty-num{min-width:28px;text-align:center;font-size:14px;font-weight:700;color:var(--text);}
+
+/* ── CART FAB ── */
+.cart-fab{position:fixed;bottom:28px;right:20px;z-index:200;background:var(--green);color:#fff;border:none;border-radius:50px;padding:14px 22px;display:flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 8px 28px rgba(26,107,10,.4);transition:transform .2s,box-shadow .2s;}
+.cart-fab:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(26,107,10,.5);}
+.cart-fab.hidden{display:none;}
+.cart-count{background:#fff;color:var(--green);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+
+/* ── DRAWER ── */
+.drawer-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.drawer-overlay.open{opacity:1;pointer-events:all;}
+.drawer{position:fixed;right:0;top:0;bottom:0;z-index:301;width:min(440px,100vw);background:#fff;border-left:2px solid var(--border);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px rgba(0,0,0,.1);}
+.drawer.open{transform:translateX(0);}
+.drawer-head{padding:20px 24px;background:var(--green);display:flex;align-items:center;justify-content:space-between;}
+.drawer-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.1em;color:#fff;}
+.drawer-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.drawer-close:hover{background:rgba(255,255,255,.35);}
+.drawer-body{flex:1;overflow-y:auto;padding:20px 24px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;background:var(--bg);}
+.drawer-empty{text-align:center;padding:60px 0;color:var(--muted);font-size:14px;}
+.drawer-empty .empty-icon{font-size:48px;margin-bottom:12px;}
+.cart-day-group{margin-bottom:16px;}
+.cart-day-header{font-size:11px;letter-spacing:.1em;font-weight:700;color:var(--muted);text-transform:uppercase;padding:6px 0;margin-bottom:8px;border-bottom:1px solid var(--border);}
+.cart-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border-radius:12px;border:1.5px solid var(--border);margin-bottom:8px;box-shadow:var(--shadow);}
+.ci-info{flex:1;}
+.ci-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.ci-price{font-size:12px;color:var(--muted);}
+.ci-ctrl{display:flex;align-items:center;gap:4px;}
+.ci-btn{width:26px;height:26px;border-radius:50%;background:var(--green-lighter);border:1.5px solid var(--border);color:var(--green);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;transition:background .15s;}
+.ci-btn:hover{background:rgba(26,107,10,.15);}
+.ci-qty{min-width:26px;text-align:center;font-size:13px;font-weight:700;color:var(--text);}
+.ci-remove{background:none;border:none;color:#ccc;font-size:16px;cursor:pointer;padding:4px;transition:color .2s;}
+.ci-remove:hover{color:#e05555;}
+.drawer-foot{padding:20px 24px;border-top:2px solid var(--border);background:#fff;}
+.cart-total{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--green-lighter);border:1.5px solid var(--border);border-radius:10px;margin-bottom:14px;}
+.total-label{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.total-amt{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--green);}
+.checkout-section{display:none;}
+.checkout-section.visible{display:block;}
+.cart-section.hidden{display:none;}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.1em;color:var(--text);margin-bottom:14px;}
+.form-group{margin-bottom:12px;}
+.form-group label{display:block;font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:6px;}
+.form-group input,.form-group textarea{width:100%;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;resize:none;transition:border-color .2s,box-shadow .2s;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(26,107,10,.1);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#bbb;}
+.wa-btn{width:100%;padding:16px;background:linear-gradient(135deg,#25d366,#128c3e);color:#fff;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:transform .2s,box-shadow .2s;}
+.wa-btn:hover{transform:translateY(-1px);}
+.wa-btn svg{width:22px;height:22px;flex-shrink:0;}
+.proceed-btn{width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 4px 14px rgba(26,107,10,.3);transition:background .2s,transform .15s;}
+.proceed-btn:hover{background:var(--green-mid);transform:translateY(-1px);}
+.back-btn{width:100%;padding:10px;margin-top:10px;background:none;border:1.5px solid var(--border);border-radius:10px;color:var(--muted);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.back-btn:hover{border-color:var(--green);color:var(--green);}
+
+/* FOOTER */
+.site-footer{position:relative;z-index:10;text-align:center;padding:20px;border-top:2px solid var(--border);font-size:11px;color:var(--muted);letter-spacing:.08em;background:var(--bg2);}
+.site-footer strong{color:var(--green);}
+.site-footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+.site-footer a:hover{color:var(--green);}
+
+/* TOAST */
+.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(20px);z-index:500;background:var(--text);color:#fff;padding:10px 22px;border-radius:50px;font-size:13px;font-weight:600;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:500px){.items-grid{grid-template-columns:1fr 1fr;}.item-price{font-size:17px;}}
+@media(max-width:340px){.items-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">← Home</a>
+    <span class="nav-day-label" id="navDayLabel">Menu</span>
+    <button class="nav-cart-btn hidden-fab" id="navCartBtn" onclick="openDrawer()">
+      🛒 Cart <span class="nav-cart-count" id="navCartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- DAY TABS -->
+<div class="day-tabs-wrap">
+  <div class="day-tabs" id="dayTabs">
+    <button class="dtab" data-di="0" onclick="switchDay(0)">Mon</button>
+    <button class="dtab" data-di="1" onclick="switchDay(1)">Tue</button>
+    <button class="dtab" data-di="2" onclick="switchDay(2)">Wed</button>
+    <button class="dtab" data-di="3" onclick="switchDay(3)">Thu</button>
+    <button class="dtab" data-di="4" onclick="switchDay(4)">Fri</button>
+    <button class="dtab" data-di="5" onclick="switchDay(5)">Sat</button>
+    <button class="dtab" data-di="6" onclick="switchDay(6)">Sun</button>
+  </div>
+</div>
+
+<!-- MENU CONTENT -->
+<main class="content" id="content"></main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div style="margin-bottom:8px;">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy & Refund</a>
+  </div>
+  Powered by <strong>VisionMatrix Tech</strong> &nbsp;·&nbsp; © 2026 V MR HEALTH · Anantapuramu
+</footer>
+
+<!-- CART FAB -->
+<button class="cart-fab hidden" id="cartFab" onclick="openDrawer()">
+  🛒 My Order <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="drawer-title">Your Order</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <div class="cart-section" id="cartSection">
+      <div class="drawer-empty" id="emptyMsg">
+        <div class="empty-icon">🥗</div>
+        <p>Your order is empty.<br/>Pick items from the menu!</p>
+      </div>
+      <div id="cartItems"></div>
+    </div>
+    <div class="checkout-section" id="checkoutSection">
+      <p class="form-title">📦 Delivery Details</p>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="custName" placeholder="Full name"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="custPhone" placeholder="10-digit mobile number"/>
+      </div>
+      <div class="form-group">
+        <label>Delivery Address</label>
+        <textarea id="custAddress" rows="3" placeholder="House no, Street, Area, Landmark..."></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-foot">
+    <div class="cart-total">
+      <span class="total-label">Order Total</span>
+      <span class="total-amt" id="totalAmt">₹0</span>
+    </div>
+    <div id="cartActions">
+      <button class="proceed-btn" onclick="showCheckout()">Proceed to Order →</button>
+    </div>
+    <div id="checkoutActions" style="display:none;">
+      <button class="wa-btn" onclick="placeOrder()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Place Order on WhatsApp
+      </button>
+      <button class="back-btn" onclick="showCart()">← Back to Order</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const MENU = [
+  {morning:[{n:"Mixed Veg Salad",p:80},{n:"Eggs Vegetable Salad",p:90},{n:"Veggies Omlate",p:90},{n:"Ragi Smoothie",p:80},{n:"Avocado Smoothie",p:100},{n:"Ash Gourd Juice",p:40},{n:"Bottle Gourd Juice",p:40},{n:"A B C Juice",p:50}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Whites Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Broccoli Chicken Salad",p:150},{n:"Protein Salad",p:140},{n:"Chicken Rolls",p:140},{n:"Paneer Rolls",p:130},{n:"Egg Rolls",p:120},{n:"Avocado Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Blueberry Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90},{n:"Chocolate Smoothie",p:80}]},
+  {morning:[{n:"Avocado Egg Toast",p:90},{n:"Oat Meal",p:110},{n:"Soya Chunks Salad",p:100},{n:"Chia Pudding",p:90},{n:"Makaana Smoothie",p:80},{n:"Walnut Smoothie",p:90},{n:"Cucumber Juice",p:40},{n:"A B C Juice",p:50},{n:"Amla Curry Leaves Juice",p:40},{n:"Mint Coriander & Holy Basil Leaf Juice",p:50}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Whites Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Makaana Salad",p:100},{n:"Broccoli Chicken Salad",p:150},{n:"Protein Salad",p:140},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:140},{n:"Peanut Butter Toast",p:70},{n:"Paneer Toast",p:80},{n:"Strawberry Smoothie",p:100},{n:"Blueberry Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90}]},
+  {morning:[{n:"Makana Salad",p:120},{n:"Mixed Broccoli Sprouts",p:100},{n:"Paneer Corn Salad",p:120},{n:"Paneer Omlat Toast",p:100},{n:"Chia Pudding",p:110},{n:"Green Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Blueberry Smoothie",p:100},{n:"Moringa Curry Leaves Juice",p:50},{n:"Palak Curry Leaves Juice",p:50},{n:"A B C Juice",p:50}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Garlic Butter Chicken Salad",p:150},{n:"Jowar Salad",p:100},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:150},{n:"Egg Rolls",p:110},{n:"Blueberry Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Avocado Smoothie",p:100},{n:"Dry Fruits Smoothie",p:90},{n:"Walnut Smoothie",p:90}]},
+  {morning:[{n:"Rajma Beans Salad",p:100},{n:"Paneer Omlate",p:100},{n:"Paneer Toast",p:100},{n:"Greek Salad",p:100},{n:"Chocolate Smoothie",p:90},{n:"Avocado Smoothie",p:100},{n:"Amla Curry Leaves Juice",p:40},{n:"Dry Fruits Smoothie",p:90},{n:"Makaana Smoothie",p:90}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Broccoli Chicken Salad",p:150},{n:"Jowar Salad",p:100},{n:"Protein Salad",p:140},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:140},{n:"Peanut Butter Toast",p:70},{n:"Avocado Toast",p:80},{n:"Avocado Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90},{n:"Chocolate Smoothie",p:80}]},
+  {morning:[{n:"Mixed Beans Salad",p:90},{n:"Paneer Mixed Beans Salad",p:110},{n:"Soya Chunks Omlate",p:100},{n:"Protein Salad",p:140},{n:"Chia Pudding",p:100},{n:"Kabul Channa Salad",p:90},{n:"A B C Juice",p:50},{n:"Amla Curry Leaves Juice",p:40}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Whites Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Broccoli Chicken Salad",p:150},{n:"Protein Salad",p:140},{n:"Jowar Salad",p:100},{n:"Makhana Salad",p:100},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:140},{n:"Peanut Butter Toast",p:70},{n:"Paneer Toast",p:80},{n:"Strawberry Smoothie",p:100},{n:"Blueberry Smoothie",p:100},{n:"Avocado Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90},{n:"Chocolate Smoothie",p:80}]},
+  {morning:[{n:"Jowar Salad",p:100},{n:"Cucumber Yogurt Salad",p:60},{n:"Protein Salad",p:140},{n:"Orange Salad",p:100},{n:"Peanut Butter Toast",p:70},{n:"A B C Juice",p:50},{n:"Amla Curry Leaves Juice",p:40},{n:"Ash Gourd Juice",p:40},{n:"Walnut Smoothie",p:90},{n:"Ragi Smoothie",p:90}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Whites Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Paneer Corn Salad",p:120},{n:"Broccoli Apple Salad",p:110},{n:"Protein Salad",p:140},{n:"Jowar Salad",p:100},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:140},{n:"Paneer Toast",p:80},{n:"Peanut Butter Toast",p:70},{n:"Blueberry Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90},{n:"Chocolate Smoothie",p:80}]},
+  {morning:[{n:"Broccoli Apple Salad",p:110},{n:"Paneer Omlate Toast",p:120},{n:"Paneer Omlate",p:110},{n:"Peanut Butter Toast",p:70},{n:"Oats Meal Smoothie",p:150},{n:"A B C Juice",p:50},{n:"Amla Curry Leaves Juice",p:40},{n:"Bottle Gourd Juice",p:50},{n:"Avocado Egg Toast",p:90}],afternoon:[{n:"Paneer Meal",p:230},{n:"Chicken Meal",p:240},{n:"Tofu Meal",p:230},{n:"Egg Whites Meal",p:200}],evening:[{n:"Mixed Veg Salad",p:80},{n:"Broccoli Chicken Salad",p:150},{n:"Paneer Corn Salad",p:130},{n:"Garlic Butter Chicken Salad",p:160},{n:"Protein Salad",p:140},{n:"Paneer Rolls",p:130},{n:"Chicken Rolls",p:140},{n:"Egg Rolls",p:120},{n:"Paneer Omlate",p:110},{n:"Broccoli Omlate",p:110},{n:"Avocado Smoothie",p:100},{n:"Strawberry Smoothie",p:100},{n:"Blueberry Smoothie",p:100},{n:"Walnut Smoothie",p:90},{n:"Dry Fruits Smoothie",p:90},{n:"Chocolate Smoothie",p:80}]}
+];
+
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const SECS = [
+  {key:"morning",label:"Morning Menu",badge:"🌅 Morning",time:"7 AM – 11 AM"},
+  {key:"afternoon",label:"Afternoon Meals",badge:"☀️ Afternoon",time:"12 PM – 3 PM"},
+  {key:"evening",label:"Evening Menu",badge:"🌿 Evening",time:"4 PM – 9 PM"}
+];
+
+let currentDay = 0;
+
+// ── LOCALSTORAGE CART ──
+function getCart() {
+  try { return JSON.parse(localStorage.getItem('vmr_cart') || '{}'); }
+  catch(e) { return {}; }
+}
+function saveCart(cart) {
+  try { localStorage.setItem('vmr_cart', JSON.stringify(cart)); }
+  catch(e) {}
+}
+function clearCart() {
+  localStorage.removeItem('vmr_cart');
+}
+
+// ── INIT ──
+window.addEventListener('DOMContentLoaded', () => {
+  // Read day from URL param
+  const params = new URLSearchParams(window.location.search);
+  let d = parseInt(params.get('day') || '0');
+  if (isNaN(d) || d < 0 || d > 6) d = 0;
+  currentDay = d;
+
+  // Mark today's tab
+  const jsDay = new Date().getDay();
+  const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
+  const todayTabEl = document.querySelector('.dtab[data-di="' + todayIndex + '"]');
+  if (todayTabEl) todayTabEl.classList.add('today-tab');
+
+  renderMenu();
+  updateDayTabs();
+  updateCartUI();
+});
+
+// ── SWITCH DAY ──
+function switchDay(di) {
+  currentDay = di;
+  history.replaceState(null, '', '?day=' + di);
+  renderMenu();
+  updateDayTabs();
+  updateCardQtys();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function updateDayTabs() {
+  document.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
+  const activeTab = document.querySelector('.dtab[data-di="' + currentDay + '"]');
+  if (activeTab) activeTab.classList.add('active');
+  document.getElementById('navDayLabel').textContent = DAYS[currentDay] + ' Menu';
+  document.title = DAYS[currentDay] + ' Menu — V MR HEALTH';
+}
+
+// ── RENDER MENU ──
+function renderMenu() {
+  const ct = document.getElementById('content');
+  ct.innerHTML = '';
+  const day = MENU[currentDay];
+  SECS.forEach(sec => {
+    const s = document.createElement('div');
+    s.className = 'meal-section';
+    s.innerHTML = `<div class="section-header"><span class="section-badge">${sec.badge}</span><span class="section-label">${sec.label}</span><span class="section-time">${sec.time}</span></div><div class="items-grid" id="grid-${currentDay}-${sec.key}"></div>`;
+    ct.appendChild(s);
+    const g = document.getElementById('grid-' + currentDay + '-' + sec.key);
+    day[sec.key].forEach(item => g.appendChild(makeCard(currentDay, sec.key, item)));
+  });
+}
+
+function makeCard(di, secKey, item) {
+  const cart = getCart();
+  const k = di + '_' + secKey + '_' + item.n;
+  const qty = cart[k] ? cart[k].qty : 0;
+  const btnId = 'ab_' + k.replace(/\W/g, '_');
+  const card = document.createElement('div');
+  card.className = 'item-card';
+  card.innerHTML = `
+    <div class="item-name">${item.n}</div>
+    <div class="item-bottom">
+      <div class="item-price">₹${item.p} <small>/ serving</small></div>
+      <div class="add-btn-wrap" id="${btnId}">
+        ${qty === 0
+          ? `<button class="quick-add" onclick="addItem(${di},'${secKey}','${item.n.replace(/'/g,"\\'")}',${item.p})">+ Add</button>`
+          : `<div class="qty-ctrl"><button class="qty-btn" onclick="changeQty(${di},'${secKey}','${item.n.replace(/'/g,"\\'")}',${item.p},-1)">−</button><span class="qty-num">${qty}</span><button class="qty-btn" onclick="changeQty(${di},'${secKey}','${item.n.replace(/'/g,"\\'")}',${item.p},1)">+</button></div>`
+        }
+      </div>
+    </div>`;
+  return card;
+}
+
+// Re-render qty buttons after day switch (for items already in cart)
+function updateCardQtys() {
+  const cart = getCart();
+  SECS.forEach(sec => {
+    MENU[currentDay][sec.key].forEach(item => {
+      const k = currentDay + '_' + sec.key + '_' + item.n;
+      const qty = cart[k] ? cart[k].qty : 0;
+      const btnId = 'ab_' + k.replace(/\W/g, '_');
+      const wrap = document.getElementById(btnId);
+      if (!wrap) return;
+      if (qty === 0) {
+        wrap.innerHTML = `<button class="quick-add" onclick="addItem(${currentDay},'${sec.key}','${item.n.replace(/'/g,"\\'")}',${item.p})">+ Add</button>`;
+      } else {
+        wrap.innerHTML = `<div class="qty-ctrl"><button class="qty-btn" onclick="changeQty(${currentDay},'${sec.key}','${item.n.replace(/'/g,"\\'")}',${item.p},-1)">−</button><span class="qty-num">${qty}</span><button class="qty-btn" onclick="changeQty(${currentDay},'${sec.key}','${item.n.replace(/'/g,"\\'")}',${item.p},1)">+</button></div>`;
+      }
+    });
+  });
+}
+
+// ── CART ACTIONS ──
+function addItem(di, secKey, name, price) {
+  const cart = getCart();
+  const k = di + '_' + secKey + '_' + name;
+  if (cart[k]) { cart[k].qty++; } else { cart[k] = {name, price, qty:1, day:di, dayName:DAYS[di], section:secKey}; }
+  saveCart(cart);
+  refreshBtn(di, secKey, name, price);
+  updateCartUI();
+  showToast('✓ ' + name + ' added');
+}
+
+function changeQty(di, secKey, name, price, delta) {
+  const cart = getCart();
+  const k = di + '_' + secKey + '_' + name;
+  if (!cart[k]) return;
+  cart[k].qty += delta;
+  if (cart[k].qty <= 0) delete cart[k];
+  saveCart(cart);
+  refreshBtn(di, secKey, name, price);
+  updateCartUI();
+}
+
+function removeItem(k) {
+  const cart = getCart();
+  const item = cart[k];
+  if (item) {
+    delete cart[k];
+    saveCart(cart);
+    const parts = k.split('_');
+    refreshBtn(parseInt(parts[0]), parts[1], item.name, item.price);
+  }
+  updateCartUI();
+}
+
+function refreshBtn(di, secKey, name, price) {
+  const cart = getCart();
+  const k = di + '_' + secKey + '_' + name;
+  const qty = cart[k] ? cart[k].qty : 0;
+  const btnId = 'ab_' + k.replace(/\W/g, '_');
+  const wrap = document.getElementById(btnId);
+  if (!wrap) return;
+  const safeName = name.replace(/'/g, "\\'");
+  if (qty === 0) {
+    wrap.innerHTML = `<button class="quick-add" onclick="addItem(${di},'${secKey}','${safeName}',${price})">+ Add</button>`;
+  } else {
+    wrap.innerHTML = `<div class="qty-ctrl"><button class="qty-btn" onclick="changeQty(${di},'${secKey}','${safeName}',${price},-1)">−</button><span class="qty-num">${qty}</span><button class="qty-btn" onclick="changeQty(${di},'${secKey}','${safeName}',${price},1)">+</button></div>`;
+  }
+}
+
+// ── CART UI ──
+function updateCartUI() {
+  const cart = getCart();
+  const keys = Object.keys(cart);
+  const total = keys.reduce((s,k) => s + cart[k].price * cart[k].qty, 0);
+  const count = keys.reduce((s,k) => s + cart[k].qty, 0);
+
+  // FABs
+  document.getElementById('cartFab').classList.toggle('hidden', count === 0);
+  document.getElementById('cartCount').textContent = count;
+  const navBtn = document.getElementById('navCartBtn');
+  navBtn.classList.toggle('hidden-fab', count === 0);
+  document.getElementById('navCartCount').textContent = count;
+
+  document.getElementById('totalAmt').textContent = '₹' + total;
+
+  const ci = document.getElementById('cartItems');
+  ci.innerHTML = '';
+  document.getElementById('emptyMsg').style.display = keys.length ? 'none' : 'block';
+
+  // Group by day
+  const byDay = {};
+  keys.forEach(k => {
+    const item = cart[k];
+    const dayKey = item.dayName || DAYS[item.day] || 'Order';
+    if (!byDay[dayKey]) byDay[dayKey] = [];
+    byDay[dayKey].push({k, item});
+  });
+
+  Object.keys(byDay).forEach(dayName => {
+    const group = document.createElement('div');
+    group.className = 'cart-day-group';
+    group.innerHTML = `<div class="cart-day-header">${dayName}</div>`;
+    byDay[dayName].forEach(({k, item}) => {
+      const parts = k.split('_');
+      const di = parseInt(parts[0]);
+      const secKey = parts[1];
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <div class="ci-info">
+          <div class="ci-name">${item.name}</div>
+          <div class="ci-price">₹${item.price} × ${item.qty} = <strong>₹${item.price * item.qty}</strong></div>
+        </div>
+        <div class="ci-ctrl">
+          <button class="ci-btn" onclick="changeQty(${di},'${secKey}','${item.name.replace(/'/g,"\\'")}',${item.price},-1);updateCartUI()">−</button>
+          <span class="ci-qty">${item.qty}</span>
+          <button class="ci-btn" onclick="changeQty(${di},'${secKey}','${item.name.replace(/'/g,"\\'")}',${item.price},1);updateCartUI()">+</button>
+        </div>
+        <button class="ci-remove" onclick="removeItem('${k}')" title="Remove">🗑</button>`;
+      group.appendChild(div);
+    });
+    ci.appendChild(group);
+  });
+}
+
+// ── DRAWER ──
+function openDrawer() {
+  showCart();
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+}
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+}
+function showCheckout() {
+  if (!Object.keys(getCart()).length) { showToast('Add items first!'); return; }
+  document.getElementById('cartSection').classList.add('hidden');
+  document.getElementById('checkoutSection').classList.add('visible');
+  document.getElementById('cartActions').style.display = 'none';
+  document.getElementById('checkoutActions').style.display = 'block';
+}
+function showCart() {
+  document.getElementById('cartSection').classList.remove('hidden');
+  document.getElementById('checkoutSection').classList.remove('visible');
+  document.getElementById('cartActions').style.display = 'block';
+  document.getElementById('checkoutActions').style.display = 'none';
+}
+
+// ── PLACE ORDER ──
+function placeOrder() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  if (!name) { showToast('Enter your name'); return; }
+  if (phone.length < 10) { showToast('Enter valid phone number'); return; }
+  if (!address) { showToast('Enter delivery address'); return; }
+  const cart = getCart();
+  const keys = Object.keys(cart);
+  if (!keys.length) { showToast('Cart is empty!'); return; }
+
+  let lines = '', total = 0;
+  const byDay = {};
+  keys.forEach(k => {
+    const i = cart[k];
+    const dayName = i.dayName || DAYS[i.day] || 'Order';
+    if (!byDay[dayName]) byDay[dayName] = [];
+    byDay[dayName].push(i);
+    total += i.price * i.qty;
+  });
+  Object.keys(byDay).forEach(day => {
+    lines += '\n📅 *' + day + '*\n';
+    byDay[day].forEach(i => { lines += '  • ' + i.name + ' × ' + i.qty + ' = ₹' + (i.price * i.qty) + '\n'; });
+  });
+
+  const msg = '🌿 *New Order — V MR HEALTH* 🌿\n\n*Customer:*\n👤 ' + name + '\n📱 ' + phone + '\n📍 ' + address + '\n\n*Order:*' + lines + '\n━━━━━━━━━━━━\n💰 *Total: ₹' + total + '*\n━━━━━━━━━━━━\n_via vmrhealth.shop_';
+  window.open('https://wa.me/918008804486?text=' + encodeURIComponent(msg), '_blank');
+  clearCart();
+  updateCartUI();
+  closeDrawer();
+  showToast('Order sent! ✓');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>
