@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Why People Choose V MR HEALTH — Blog</title>
+<meta name="description" content="Discover why health-conscious people in Anantapuramu choose V MR HEALTH for clean eating, fresh salads, smoothies, and nutritious daily meals."/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f9f4;
+  --green:#1a6b0a;
+  --green-mid:#2d8a18;
+  --green-light:#e8f5e1;
+  --green-lighter:#f0fae8;
+  --text:#111814;
+  --text2:#3a4a38;
+  --muted:#7a8c76;
+  --border:#d8e8d0;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+}
+
+/* ── NAV ── */
+.topnav{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid rgba(26,107,10,0.4);
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.12em;
+  color:#a3f05a;text-decoration:none;
+}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-link{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  text-decoration:none;transition:color .2s;
+}
+.nav-link:hover{color:#a3f05a;}
+.nav-link.home-btn{
+  background:var(--green);color:#fff;
+  padding:7px 16px;border-radius:50px;
+  font-weight:600;font-size:12px;
+}
+.nav-link.home-btn:hover{background:var(--green-mid);color:#fff;}
+
+/* ── HERO ── */
+.blog-hero{
+  position:relative;
+  overflow:hidden;
+  min-height:420px;
+  display:flex;align-items:flex-end;
+  border-bottom:3px solid rgba(26,107,10,0.3);
+}
+.blog-hero-bg{
+  position:absolute;inset:0;
+  background:
+    url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1400&q=80')
+    center/cover no-repeat;
+  background-color:#0d3d05;
+  animation:heroPan 20s ease-in-out infinite alternate;
+}
+@keyframes heroPan{
+  from{transform:scale(1);}
+  to{transform:scale(1.06) translate(-1%,0.5%);}
+}
+.blog-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,15,3,0.95) 0%,
+    rgba(0,20,5,0.7) 45%,
+    rgba(0,30,8,0.35) 100%
+  );
+}
+.blog-hero-content{
+  position:relative;z-index:2;
+  padding:40px 24px 48px;
+  max-width:800px;
+}
+.blog-tag{
+  display:inline-block;
+  background:var(--green);color:#fff;
+  font-size:11px;letter-spacing:.15em;font-weight:700;
+  text-transform:uppercase;
+  padding:5px 14px;border-radius:4px;
+  margin-bottom:16px;
+}
+.blog-hero-content h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(30px,6vw,54px);
+  letter-spacing:.06em;
+  color:#fff;
+  line-height:1.1;
+  margin-bottom:18px;
+}
+.blog-meta{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.blog-meta span{
+  font-size:12px;color:rgba(255,255,255,0.55);
+  display:flex;align-items:center;gap:5px;
+}
+
+/* ── ARTICLE LAYOUT ── */
+.article-wrap{
+  max-width:800px;margin:0 auto;
+  padding:48px 20px 80px;
+}
+
+/* Intro block */
+.article-intro{
+  font-size:17px;color:var(--text2);
+  line-height:1.9;
+  padding:24px 28px;
+  background:#fff;
+  border-left:5px solid var(--green);
+  border-radius:0 14px 14px 0;
+  margin-bottom:40px;
+  box-shadow:0 2px 14px rgba(26,107,10,.07);
+}
+
+/* Section blocks */
+.article-section{margin-bottom:44px;}
+.article-section h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(22px,4vw,30px);
+  letter-spacing:.08em;
+  color:var(--text);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.article-section h2::after{
+  content:'';
+  flex:1;height:2px;
+  background:linear-gradient(to right,var(--green-light),transparent);
+}
+.article-section p{
+  font-size:15px;color:var(--text2);
+  line-height:1.85;margin-bottom:14px;
+}
+.article-section p:last-child{margin-bottom:0;}
+
+/* Inline image */
+.article-img{
+  width:100%;
+  border-radius:14px;
+  overflow:hidden;
+  margin:20px 0;
+  box-shadow:0 4px 24px rgba(0,0,0,.1);
+  background:var(--green-lighter);
+  aspect-ratio:16/7;
+}
+.article-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 6s ease;
+}
+.article-img:hover img{transform:scale(1.03);}
+
+/* Callout */
+.callout{
+  background:var(--green-lighter);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:22px 24px;
+  margin:20px 0;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.callout-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+.callout-text{font-size:14.5px;color:var(--text2);line-height:1.8;}
+.callout-text strong{color:var(--green);}
+
+/* Reasons list */
+.reasons-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:20px 0;
+}
+.reason-card{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 2px 10px rgba(26,107,10,.06);
+}
+.reason-icon{font-size:22px;margin-bottom:8px;}
+.reason-title{
+  font-size:13.5px;font-weight:700;
+  color:var(--text);margin-bottom:6px;
+}
+.reason-text{font-size:12.5px;color:var(--muted);line-height:1.6;}
+
+/* Pull quote */
+.pull-quote{
+  text-align:center;
+  padding:32px 24px;
+  margin:32px 0;
+  border-top:2px solid var(--green-light);
+  border-bottom:2px solid var(--green-light);
+}
+.pull-quote blockquote{
+  font-family:'DM Sans',sans-serif;
+  font-style:italic;
+  font-size:clamp(17px,3vw,22px);
+  color:var(--green);
+  font-weight:600;
+  line-height:1.5;
+  max-width:600px;
+  margin:0 auto;
+}
+
+/* CTA block */
+.cta-block{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  border-radius:20px;
+  padding:40px 28px;
+  text-align:center;
+  margin-top:48px;
+  overflow:hidden;
+  position:relative;
+}
+.cta-block::before{
+  content:'';
+  position:absolute;
+  width:300px;height:300px;
+  border-radius:50%;
+  background:rgba(163,240,90,0.05);
+  top:-100px;right:-80px;
+}
+.cta-block h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(24px,5vw,38px);
+  letter-spacing:.1em;color:#fff;
+  margin-bottom:12px;
+  position:relative;
+}
+.cta-block p{
+  font-size:14px;color:rgba(255,255,255,0.6);
+  margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;
+  position:relative;
+  margin-bottom:24px;
+}
+.cta-btns{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  position:relative;
+}
+.cta-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#25d366,#128c3e);
+  color:#fff;border-radius:50px;
+  padding:14px 28px;
+  font-size:14px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(37,211,102,.35);
+  transition:transform .2s;
+}
+.cta-wa:hover{transform:translateY(-2px);}
+.cta-menu{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.1);
+  border:1.5px solid rgba(255,255,255,0.2);
+  color:#fff;border-radius:50px;
+  padding:14px 28px;
+  font-size:14px;font-weight:600;
+  text-decoration:none;
+  transition:background .2s;
+}
+.cta-menu:hover{background:rgba(255,255,255,0.18);}
+
+/* ── FOOTER ── */
+.page-footer{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:20px;text-align:center;
+  border-top:2px solid rgba(26,107,10,0.3);
+  font-size:11px;color:rgba(255,255,255,0.35);
+  letter-spacing:.06em;
+}
+.page-footer strong{color:#a3f05a;}
+.page-footer a{color:rgba(255,255,255,0.5);text-decoration:none;margin:0 8px;}
+.page-footer a:hover{color:#a3f05a;}
+
+@media(max-width:560px){
+  .reasons-list{grid-template-columns:1fr;}
+  .nav-links .nav-link:not(.home-btn){display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand">V MR HEALTH</a>
+  <div class="nav-links">
+    <a href="terms.html" class="nav-link">Terms</a>
+    <a href="privacy.html" class="nav-link">Privacy</a>
+    <a href="index.html" class="nav-link home-btn">🏠 Order Now</a>
+  </div>
+</nav>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div class="blog-hero-bg"></div>
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-content">
+    <div class="blog-tag">🌿 Health & Lifestyle</div>
+    <h1>Why Anantapur's Health-Conscious People Choose V MR HEALTH</h1>
+    <div class="blog-meta">
+      <span>📅 June 2026</span>
+      <span>⏱️ 5 min read</span>
+      <span>📍 Anantapuramu, AP</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE -->
+<div class="article-wrap">
+
+  <!-- INTRO -->
+  <p class="article-intro">
+    Finding genuinely healthy, freshly prepared food in Anantapuramu was a challenge — until V MR HEALTH arrived. What started as a vision to bring clean, nutritious eating to everyday life has grown into something the city's health lovers count on every single day. Here's the real reason why people keep coming back.
+  </p>
+
+  <!-- SECTION 1 -->
+  <div class="article-section">
+    <h2>🥗 Every Ingredient Is Fresh. Every Day.</h2>
+    <p>Walk into any fast-food outlet and you'll find the same pre-cooked, reheated food waiting under a lamp. V MR HEALTH works differently. Every item on our menu — from the Mixed Veg Salad to the Garlic Butter Chicken Salad — is prepared fresh for that session.</p>
+    <p>Morning, afternoon, and evening menus are each prepared in their own window. Nothing carries over. No frozen ingredients. No shortcuts. The freshness is something you can taste in the first bite.</p>
+
+    <div class="article-img">
+      <img
+        src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80"
+        alt="Fresh healthy salad bowl with colourful vegetables"
+        loading="lazy"
+        onerror="this.parentElement.style.background='#e8f5e1';this.style.display='none';"
+      />
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon">🌱</div>
+      <div class="callout-text">
+        <strong>Did you know?</strong> Eating fresh, minimally processed food consistently has been shown to improve energy levels, digestion, and mental clarity within just a few weeks. That's exactly what our daily menus are designed to support.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="article-section">
+    <h2>📅 A Menu That Rotates — Never Boring</h2>
+    <p>One of the biggest reasons people give up on healthy eating is boredom. Eating the same boiled food day after day is not sustainable. At V MR HEALTH, our menu rotates across the entire week — Monday through Sunday — ensuring that no two days are the same.</p>
+    <p>Monday might feature Ragi Smoothie and Avocado Smoothie in the morning. By Wednesday, you're starting with a Green Smoothie and Paneer Omlate Toast. Each week brings variety across salads, smoothies, juices, rolls, meals, and toasts — keeping your plate interesting and your nutrition balanced.</p>
+
+    <div class="reasons-list">
+      <div class="reason-card">
+        <div class="reason-icon">🌅</div>
+        <div class="reason-title">Morning Menu</div>
+        <div class="reason-text">Fresh salads, smoothies, juices, eggs & paneer options. 7 AM – 11 AM daily.</div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">☀️</div>
+        <div class="reason-title">Afternoon Meals</div>
+        <div class="reason-text">Complete balanced meals — Paneer, Chicken, Tofu, Egg Whites. 12 PM – 3 PM.</div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">🌿</div>
+        <div class="reason-title">Evening Menu</div>
+        <div class="reason-text">Protein salads, rolls, smoothies, toasts. Light yet satisfying. 4 PM – 9 PM.</div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">🗓️</div>
+        <div class="reason-title">Weekly Rotation</div>
+        <div class="reason-text">7 different menus across the week. Your taste buds never get bored.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="article-section">
+    <h2>🎯 Something for Every Fitness Goal</h2>
+    <p>Whether you're trying to lose weight, build muscle, manage a health condition, or simply eat cleaner — V MR HEALTH has options for you. Our menu is thoughtfully designed to offer variety across macronutrient profiles:</p>
+    <p><strong>High-Protein options</strong> for muscle building: Broccoli Chicken Salad, Protein Salad, Egg Whites Meal, Chicken Meal, Soya Chunks Omlate — rich in lean protein to support recovery and muscle maintenance.</p>
+    <p><strong>Plant-based choices</strong> for vegetarians: Paneer Meal, Tofu Meal, Chia Pudding, Greek Salad, Makhana Salad, and an extensive range of fresh vegetable-based salads.</p>
+    <p><strong>Detox & cleanse</strong> options: Ash Gourd Juice, Bottle Gourd Juice, A B C Juice (Apple, Beetroot, Carrot), Amla Curry Leaves Juice, Moringa Curry Leaves Juice — natural detox drinks from real ingredients.</p>
+
+    <div class="article-img">
+      <img
+        src="https://images.unsplash.com/photo-1540189549336-e6e99eb4b951?auto=format&fit=crop&w=1200&q=80"
+        alt="Colourful healthy smoothie and juice bowls"
+        loading="lazy"
+        onerror="this.parentElement.style.background='#e8f5e1';this.style.display='none';"
+      />
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <blockquote>
+      "Clean eating isn't a diet. It's a decision to respect your body — and V MR HEALTH makes that decision easier every single day."
+    </blockquote>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="article-section">
+    <h2>📲 Ordering That Actually Works</h2>
+    <p>Nobody wants to call and repeat an order three times or wait for a reply on a cluttered app. V MR HEALTH uses a simple, fast WhatsApp ordering system — you build your order on the website, enter your delivery details, and it lands directly in our WhatsApp with everything organized. No app download needed. No account creation. No waiting.</p>
+    <p>The entire ordering process takes under 2 minutes. And your order summary is clearly formatted so our team can process it accurately without any back-and-forth.</p>
+
+    <div class="callout">
+      <div class="callout-icon">📱</div>
+      <div class="callout-text">
+        <strong>How it works:</strong> Browse the weekly menu → Select your items → Enter your name, phone, and address → Click "Place Order on WhatsApp" → Done. Your order arrives fresh at your door.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="article-section">
+    <h2>💰 Healthy Eating That Doesn't Cost a Fortune</h2>
+    <p>One of the biggest myths about healthy eating is that it has to be expensive. A Mixed Veg Salad at V MR HEALTH starts at ₹80. A complete balanced Afternoon Meal — with a protein, grains, and vegetables — is available for ₹200 to ₹240. Fresh juices start at ₹40.</p>
+    <p>Compare that to the long-term cost of poor nutrition — frequent illnesses, low energy, medical bills — and the math becomes very clear. Eating clean at V MR HEALTH is genuinely one of the most cost-effective investments you can make in your health.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="article-section">
+    <h2>🏙️ Anantapuramu's Own Health Brand</h2>
+    <p>There is something meaningful about supporting a local business that genuinely cares about your community's health. V MR HEALTH is not a franchise. It's not a chain. It was started here, in Anantapuramu, with one clear goal: to make clean, nutritious food accessible to every person in this city — whether they're a college student, a working professional, or a parent managing their family's health.</p>
+    <p>Every salad chopped, every smoothie blended, every meal packed is done with that purpose in mind. That's the difference you taste when the food is made with intention.</p>
+
+    <div class="article-img">
+      <img
+        src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80"
+        alt="Freshly prepared healthy food spread"
+        loading="lazy"
+        onerror="this.parentElement.style.background='#e8f5e1';this.style.display='none';"
+      />
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="article-section">
+    <h2>✅ The Bottom Line</h2>
+    <p>People choose V MR HEALTH because it solves a real problem — finding food that is genuinely fresh, genuinely healthy, genuinely varied, and genuinely accessible in Anantapuramu. It removes every excuse that stands between you and clean eating.</p>
+    <p>The question isn't why people choose V MR HEALTH. It's why they'd choose anything else.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Ready to Start Eating Clean?</h3>
+    <p style="position:relative;margin-bottom:24px;">Browse today's menu and place your order in under 2 minutes. Fresh food delivered to your door in Anantapuramu.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/918008804486" class="cta-wa">
+        📲 Order on WhatsApp
+      </a>
+      <a href="index.html" class="cta-menu">
+        🥗 View Full Menu
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div style="margin-bottom:10px;">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy & Refund Policy</a>
+  </div>
+  © 2026 V MR HEALTH · Anantapuramu &nbsp;|&nbsp; Powered by <strong>VisionMatrix Tech</strong>
+</footer>
+
+</body>
+</html>
