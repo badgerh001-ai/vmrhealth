@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms & Conditions — V MR HEALTH</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f9f4;
+  --green:#1a6b0a;
+  --green-mid:#2d8a18;
+  --green-light:#e8f5e1;
+  --green-lighter:#f0fae8;
+  --text:#111814;
+  --text2:#3a4a38;
+  --muted:#7a8c76;
+  --border:#d8e8d0;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+}
+
+/* ── NAV ── */
+.topnav{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:2px solid rgba(26,107,10,0.4);
+}
+.nav-brand{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.12em;
+  color:#a3f05a;text-decoration:none;
+}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-link{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  text-decoration:none;transition:color .2s;
+}
+.nav-link:hover{color:#a3f05a;}
+.nav-link.home-btn{
+  background:var(--green);color:#fff;
+  padding:7px 16px;border-radius:50px;
+  font-weight:600;font-size:12px;
+}
+.nav-link.home-btn:hover{background:var(--green-mid);color:#fff;}
+
+/* ── HERO BANNER ── */
+.page-banner{
+  background:linear-gradient(135deg,rgba(0,20,5,0.9),rgba(26,107,10,0.7)),
+    url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  background-color:#0d3d05;
+  padding:52px 20px 40px;
+  text-align:center;
+  border-bottom:3px solid rgba(26,107,10,0.3);
+}
+.page-banner h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(32px,6vw,52px);
+  letter-spacing:.1em;color:#fff;
+  margin-bottom:10px;
+}
+.page-banner p{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  letter-spacing:.08em;
+}
+
+/* ── CONTENT ── */
+.doc-wrap{
+  max-width:780px;margin:40px auto;
+  padding:0 20px 80px;
+}
+.last-updated{
+  font-size:12px;color:var(--muted);
+  background:var(--green-lighter);
+  border:1px solid var(--border);
+  display:inline-block;padding:6px 16px;border-radius:50px;
+  margin-bottom:32px;
+}
+.section-block{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:28px 28px;
+  margin-bottom:20px;
+  box-shadow:0 2px 12px rgba(26,107,10,.05);
+}
+.section-block h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.1em;
+  color:var(--green);
+  margin-bottom:14px;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--green-light);
+  display:flex;align-items:center;gap:10px;
+}
+.section-block p{
+  font-size:14px;color:var(--text2);
+  line-height:1.8;margin-bottom:12px;
+}
+.section-block p:last-child{margin-bottom:0;}
+.section-block ul{
+  padding-left:18px;margin-bottom:12px;
+}
+.section-block ul li{
+  font-size:14px;color:var(--text2);
+  line-height:1.8;margin-bottom:6px;
+}
+.highlight-box{
+  background:var(--green-lighter);
+  border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;
+  padding:14px 18px;
+  margin:14px 0;
+  font-size:13.5px;color:var(--text2);
+  line-height:1.7;
+}
+.contact-block{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  border-radius:14px;
+  padding:28px;
+  text-align:center;
+  margin-top:32px;
+}
+.contact-block h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:20px;letter-spacing:.1em;
+  color:#a3f05a;margin-bottom:8px;
+}
+.contact-block p{
+  font-size:13px;color:rgba(255,255,255,0.65);
+  margin-bottom:16px;
+}
+.contact-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#25d366,#128c3e);
+  color:#fff;border-radius:50px;
+  padding:12px 24px;
+  font-size:14px;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(37,211,102,.3);
+}
+
+/* ── FOOTER ── */
+.page-footer{
+  background:linear-gradient(135deg,#061a06,#0a2a0a);
+  padding:20px;text-align:center;
+  border-top:2px solid rgba(26,107,10,0.3);
+  font-size:11px;color:rgba(255,255,255,0.35);
+  letter-spacing:.06em;
+}
+.page-footer strong{color:#a3f05a;}
+.page-footer a{color:rgba(255,255,255,0.5);text-decoration:none;margin:0 8px;}
+.page-footer a:hover{color:#a3f05a;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <a href="index.html" class="nav-brand">V MR HEALTH</a>
+  <div class="nav-links">
+    <a href="privacy.html" class="nav-link">Privacy Policy</a>
+    <a href="blog-why-vmr.html" class="nav-link">Blog</a>
+    <a href="index.html" class="nav-link home-btn">🏠 Order Now</a>
+  </div>
+</nav>
+
+<!-- BANNER -->
+<div class="page-banner">
+  <h1>Terms & Conditions</h1>
+  <p>Please read these terms carefully before placing your order.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="doc-wrap">
+  <div class="last-updated">📅 Last Updated: June 2026</div>
+
+  <div class="section-block">
+    <h2>📋 1. Agreement to Terms</h2>
+    <p>By accessing the V MR HEALTH website (vmrhealth.shop) or placing an order with us via WhatsApp, phone, or any digital platform, you agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, please do not proceed with an order.</p>
+    <p>V MR HEALTH is a healthy food and meal delivery service based in Anantapuramu, Andhra Pradesh. These terms govern your use of our services and any transactions you make with us.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>🥗 2. Our Services</h2>
+    <p>V MR HEALTH provides the following food services from our outlet located at Sri Swara Hospital Building, Ramnagar, Anantapuramu:</p>
+    <ul>
+      <li>Daily rotating menus for Morning, Afternoon, and Evening sessions</li>
+      <li>Fresh salads, smoothies, juices, healthy tiffins, and balanced meals</li>
+      <li>Order placement via our website's WhatsApp ordering system</li>
+      <li>Home delivery within Anantapuramu (delivery zones apply)</li>
+    </ul>
+    <div class="highlight-box">
+      Our menu rotates on a weekly basis (Monday to Sunday) to ensure variety and freshness. Items listed on a specific day are available only during that day's service window.
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>📦 3. Ordering & Menu Availability</h2>
+    <p>All orders are subject to availability. By placing an order, you acknowledge the following:</p>
+    <ul>
+      <li>Orders must be placed during the respective service window: Morning (7 AM–11 AM), Afternoon (12 PM–3 PM), Evening (4 PM–9 PM).</li>
+      <li>Menu items listed on the website are for the current weekly cycle. Availability may vary based on ingredient supply.</li>
+      <li>We reserve the right to substitute unavailable items with a similar item of equal or higher value, after informing the customer.</li>
+      <li>Bulk orders (10+ items) may require prior notice of at least 2 hours.</li>
+    </ul>
+    <p>Once an order is confirmed via WhatsApp, it is considered placed and accepted by V MR HEALTH. We will communicate any issues with fulfilment directly via WhatsApp.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>💳 4. Pricing & Payment</h2>
+    <p>All prices displayed on the menu are in Indian Rupees (₹) and are inclusive of applicable taxes unless otherwise stated.</p>
+    <ul>
+      <li>Prices are subject to change without prior notice. Any change will be reflected on the website menu.</li>
+      <li>Delivery charges, if applicable, will be communicated at the time of order confirmation.</li>
+      <li>Accepted payment methods: Cash on Delivery, UPI (Google Pay, PhonePe, Paytm), bank transfer. No card payments are currently accepted.</li>
+      <li>Payment must be made at the time of delivery for COD orders.</li>
+    </ul>
+  </div>
+
+  <div class="section-block">
+    <h2>🚚 5. Delivery</h2>
+    <p>V MR HEALTH currently delivers within select areas of Anantapuramu city. By placing a delivery order, you confirm:</p>
+    <ul>
+      <li>Your delivery address is within our serviceable area.</li>
+      <li>You or an authorized person will be available to receive the order at the specified address.</li>
+      <li>Estimated delivery times are indicative and may vary due to traffic, weather, or high order volumes.</li>
+      <li>V MR HEALTH is not responsible for delays caused by incorrect addresses provided by the customer.</li>
+    </ul>
+    <div class="highlight-box">
+      If you are unavailable at the time of delivery, our delivery person will attempt to contact you via phone. After two failed attempts, the order may be cancelled without refund.
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>❌ 6. Cancellation Policy</h2>
+    <p>Cancellation requests are governed by the following rules:</p>
+    <ul>
+      <li><strong>Before preparation begins:</strong> Full cancellation is allowed if the request is made within 10 minutes of order placement via WhatsApp.</li>
+      <li><strong>After preparation begins:</strong> Cancellation is not possible once the food has been prepared. No refund will be issued.</li>
+      <li><strong>No-show at delivery:</strong> If the customer is unreachable and the order cannot be delivered, no refund will be issued.</li>
+    </ul>
+    <p>For cancellation requests, please WhatsApp us at <strong>8008804486</strong> immediately after placing the order.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>🌿 7. Health & Dietary Disclaimer</h2>
+    <p>V MR HEALTH prepares food with health-conscious ingredients. However, we are not a medical dietary service. Please note:</p>
+    <ul>
+      <li>Our menu items may contain allergens including nuts, dairy, eggs, and gluten. Please inform us of any allergies before ordering.</li>
+      <li>Nutritional information is approximate and provided in good faith. We do not guarantee specific caloric or nutritional values.</li>
+      <li>Our food is not intended to diagnose, treat, cure, or prevent any disease or medical condition.</li>
+      <li>Customers with specific medical dietary requirements should consult their physician before ordering.</li>
+    </ul>
+    <div class="highlight-box">
+      ⚠️ If you have a known food allergy, please mention it explicitly in your order message on WhatsApp. We will do our best to accommodate, but cannot guarantee zero cross-contamination in our shared kitchen environment.
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2>⚖️ 8. Limitation of Liability</h2>
+    <p>V MR HEALTH shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services, including but not limited to:</p>
+    <ul>
+      <li>Delay or non-delivery due to circumstances beyond our control (natural events, power outages, etc.)</li>
+      <li>Adverse reactions to food items where allergy information was not provided by the customer</li>
+      <li>Loss or damage caused by incorrect delivery information</li>
+    </ul>
+    <p>Our total liability in any case shall not exceed the value of the specific order in question.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>🔒 9. Intellectual Property</h2>
+    <p>All content on the V MR HEALTH website — including but not limited to the logo, brand name, menu design, photographs, and page layout — is the intellectual property of V MR HEALTH. Unauthorized reproduction, copying, or commercial use of any content is strictly prohibited.</p>
+    <p>This website is designed and maintained by <strong>VisionMatrix Tech</strong>, Anantapuramu.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>📜 10. Governing Law</h2>
+    <p>These Terms & Conditions are governed by and construed in accordance with the laws of India. Any disputes arising from these terms or your use of our services will be subject to the exclusive jurisdiction of the courts in Anantapuramu, Andhra Pradesh.</p>
+    <p>We reserve the right to modify these terms at any time. Continued use of our service after any modification constitutes acceptance of the updated terms.</p>
+  </div>
+
+  <!-- CONTACT BLOCK -->
+  <div class="contact-block">
+    <h3>Questions About These Terms?</h3>
+    <p>Reach out to us directly on WhatsApp and we'll be happy to clarify.</p>
+    <a href="https://wa.me/918008804486" class="contact-wa">
+      📲 Chat with Us on WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div style="margin-bottom:10px;">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy & Refund Policy</a>
+    <a href="blog-why-vmr.html">Blog</a>
+  </div>
+  © 2026 V MR HEALTH · Anantapuramu &nbsp;|&nbsp; Powered by <strong>VisionMatrix Tech</strong>
+</footer>
+
+</body>
+</html>
