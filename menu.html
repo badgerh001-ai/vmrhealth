@@ -116,32 +116,33 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
   border:1.5px solid var(--border);
   border-left:4px solid var(--green);
   border-radius:0 10px 10px 0;
-  padding:12px 14px;
-  margin-bottom:16px;
+  padding:10px 13px;
+  margin-bottom:13px;
 }
-.db-item{font-size:12.5px;color:var(--text2);font-weight:500;flex:1;min-width:130px;}
+.db-item{font-size:12px;color:var(--text2);font-weight:500;flex:1;min-width:120px;}
 .db-item strong{color:var(--green);}
 
-.form-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.1em;color:var(--text);margin-bottom:14px;}
-.form-group{margin-bottom:12px;}
-.form-group label{display:block;font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:6px;}
-.form-group input,.form-group textarea{width:100%;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;resize:none;transition:border-color .2s,box-shadow .2s;}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.1em;color:var(--text);margin-bottom:12px;}
+.form-group{margin-bottom:10px;}
+.form-group label{display:block;font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;font-weight:600;margin-bottom:5px;}
+.form-group input,.form-group textarea{width:100%;padding:10px 13px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;resize:none;transition:border-color .2s,box-shadow .2s;}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(26,107,10,.1);}
 .form-group input::placeholder,.form-group textarea::placeholder{color:#bbb;}
 
 /* ── LOCATION BUTTON ── */
 .loc-btn{
-  width:100%;padding:12px 16px;
-  background:#fff;border:1.5px solid var(--border);
+  width:100%;padding:10px 14px;
+  background:#fff;border:1.5px solid var(--green);
   border-radius:10px;color:var(--green);
-  font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;
   cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
   transition:all .2s;
+  box-shadow:0 1px 6px rgba(26,107,10,0.1);
 }
-.loc-btn:hover{border-color:var(--green);background:var(--green-lighter);}
-.loc-btn.loading{color:var(--muted);pointer-events:none;background:var(--bg);}
+.loc-btn:hover{background:var(--green-lighter);}
+.loc-btn.loading{color:var(--muted);pointer-events:none;background:var(--bg);border-color:var(--border);}
 .loc-btn.success{background:var(--green-light);border-color:var(--green);color:var(--green);}
-.loc-status{font-size:12px;margin-top:6px;padding:7px 10px;border-radius:8px;display:none;line-height:1.5;}
+.loc-status{font-size:11.5px;margin-top:5px;padding:6px 10px;border-radius:8px;display:none;line-height:1.5;}
 .loc-status.show-ok{display:block;background:var(--green-light);color:var(--green);border:1px solid var(--border);}
 .loc-status.show-err{display:block;background:#fff2f2;color:#c0392b;border:1px solid #fcc;}
 
@@ -253,7 +254,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min
       </div>
       <div class="form-group">
         <label>Delivery Address</label>
-        <textarea id="custAddress" rows="3" placeholder="House no, Street, Area, Landmark..."></textarea>
+        <textarea id="custAddress" rows="2" placeholder="House no, Street, Area, Landmark..."></textarea>
       </div>
 
       <!-- Location Pin -->
@@ -560,6 +561,19 @@ function showCheckout() {
   document.getElementById('checkoutSection').classList.add('visible');
   document.getElementById('cartActions').style.display = 'none';
   document.getElementById('checkoutActions').style.display = 'block';
+  // Reset location state when re-opening checkout
+  var locBtn = document.getElementById('locBtn');
+  var locStatus = document.getElementById('locStatus');
+  var locUrl = document.getElementById('locationUrl').value;
+  if (!locUrl) {
+    locBtn.className = 'loc-btn';
+    locBtn.textContent = '📍 Share My Exact Location';
+    locStatus.className = 'loc-status';
+  }
+  // Scroll drawer body to top so all form fields + location button are accessible
+  setTimeout(function(){
+    document.getElementById('drawerBody').scrollTop = 0;
+  }, 50);
 }
 function showCart() {
   document.getElementById('cartSection').classList.remove('hidden');
